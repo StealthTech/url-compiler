@@ -18,6 +18,7 @@ module.exports = {
         library: {
             name: 'urlCompiler',
             type: 'umd'
-        }
+        },
+        clean: true
     },
 };
