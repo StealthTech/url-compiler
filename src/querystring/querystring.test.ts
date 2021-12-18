@@ -1,9 +1,9 @@
-import {querystring} from '../../src/helpers/querystring';
+import {querystring} from './querystring';
 
 describe('Function `querystring`', () => {
     test('Querystring with empty `query` object passed should return null', () => {
         const received = querystring({});
-        const expected = null;
+        const expected: null = null;
 
         expect(received).toBe(expected);
     });

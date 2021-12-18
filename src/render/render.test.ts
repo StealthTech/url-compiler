@@ -1,4 +1,4 @@
-import {render} from '../../src/helpers/render';
+import {render} from './render';
 
 describe('Function `helpers/render`', () => {
     const BASE_URL = 'https://npmjs.com';

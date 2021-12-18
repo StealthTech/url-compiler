@@ -1,4 +1,4 @@
-import {compile} from '../src/compile';
+import {compile} from './compile';
 
 
 describe('Function `compile`', () => {
