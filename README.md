@@ -37,7 +37,7 @@ const params = {
     lowerCase: true,
     trailingSlash: true,
 }
-const url = compileUrl(template);
+const url = compileUrl(template, params);
 
 // https://npmjs.com/packages/url-compiler/#usage?foo=bar
 console.log(url);
