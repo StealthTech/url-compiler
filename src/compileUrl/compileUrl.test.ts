@@ -95,4 +95,24 @@ describe('Function `compile`', () => {
 
         expect(received).toBe(expected);
     });
+
+    test('Compile with all params set', () => {
+        const params = {
+            query: {
+                foo: 'bar',
+            },
+            context: {
+                package: 'url-compiler',
+            },
+            hash: 'usage',
+            trailingSlash: true,
+            lowerCase: true,
+        }
+        const url = `${BASE_URL}/PACKAGES/{package}`;
+
+        const received = compileUrl(url, params);
+        const expected = `${BASE_URL}/packages/url-compiler/#usage?foo=bar`;
+
+        expect(received).toBe(expected);
+    })
 });
