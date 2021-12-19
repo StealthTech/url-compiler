@@ -1,10 +1,10 @@
-import {render} from './render';
+import {renderUrl} from './renderUrl';
 
 describe('Function `helpers/render`', () => {
     const BASE_URL = 'https://npmjs.com';
 
     test('Render with empty object passed as `context` parameter should return base url', () => {
-        const received = render(BASE_URL, {});
+        const received = renderUrl(BASE_URL, {});
         expect(received).toBe(BASE_URL);
     });
 
@@ -12,7 +12,7 @@ describe('Function `helpers/render`', () => {
         const context = { test: 'value' };
         const url = `${BASE_URL}/{test}/`;
         const expected = `${BASE_URL}/value/`;
-        const received = render(url, context);
+        const received = renderUrl(url, context);
 
         expect(received).toBe(expected);
     });
@@ -21,7 +21,7 @@ describe('Function `helpers/render`', () => {
         const context = { test: 'value', test1: 'value1' };
         const url = `${BASE_URL}/{test}/`;
         const expected = `${BASE_URL}/value/`;
-        const received = render(url, context);
+        const received = renderUrl(url, context);
 
         expect(received).toBe(expected);
     });
@@ -29,7 +29,7 @@ describe('Function `helpers/render`', () => {
     test('Render with non-existing template key in base url should ignore it', () => {
         const context = {};
         const url = `${BASE_URL}/{test}/`;
-        const received = render(url, context);
+        const received = renderUrl(url, context);
 
         expect(received).toBe(url);
     });

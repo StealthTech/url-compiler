@@ -1,4 +1,4 @@
-import {handleTrailingSlash} from './handle-trailing-slash';
+import {handleTrailingSlash} from './handleTrailingSlash';
 
 describe('Function `handleTrailingSlash`', () => {
     const BASE_URL = 'https://npmjs.com';

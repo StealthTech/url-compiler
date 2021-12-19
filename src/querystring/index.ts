@@ -1,1 +1,0 @@
-export {querystring} from './querystring';

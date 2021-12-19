@@ -1,6 +1,6 @@
-import {render} from '../render';
-import {querystring} from '../querystring';
-import {handleTrailingSlash} from '../handle-trailing-slash';
+import {renderUrl} from '../renderUrl';
+import {queryString} from '../queryString';
+import {handleTrailingSlash} from '../handleTrailingSlash';
 
 
 interface CompileParams {
@@ -13,21 +13,23 @@ interface CompileParams {
 
 /**
  *
- * @param url Base url template
+ * @param baseUrl Base url template
  * @param params Url compilation parameters
  * @returns Compiled url
  */
-export const compile = (url: string, {
-    query = {},
-    context = {},
-    hash = null,
-    lowerCase = false,
-    trailingSlash = false
-}: CompileParams = {}) => {
-    const renderedUrl = render(url, context);
+export const compileUrl = (baseUrl: string, params: CompileParams = {}) => {
+    const {
+        query = {},
+        context = {},
+        hash = null,
+        lowerCase = false,
+        trailingSlash = false
+    } = params;
+
+    const renderedUrl = renderUrl(baseUrl, context);
     const _url = handleTrailingSlash(renderedUrl, trailingSlash);
 
-    const _query = querystring(query);
+    const _query = queryString(query);
 
     const _hash = hash && `#${hash}`;
 

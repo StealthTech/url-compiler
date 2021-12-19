@@ -1,7 +1,7 @@
-export {compile} from './compile';
+export {compileUrl} from './compileUrl';
 
-export {handleTrailingSlash} from './handle-trailing-slash';
+export {handleTrailingSlash} from './handleTrailingSlash';
 
-export {querystring} from './querystring';
+export {queryString} from './queryString';
 
-export {render} from './render';
+export {renderUrl} from './renderUrl';
