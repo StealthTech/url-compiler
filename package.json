@@ -17,6 +17,13 @@
   },
   "author": "Mikhail Volynov",
   "license": "ISC",
+  "keywords": [
+    "typescript",
+    "url",
+    "util",
+    "helper",
+    "utility"
+  ],
   "bugs": {
     "url": "https://github.com/StealthTech/url-compiler/issues"
   },
