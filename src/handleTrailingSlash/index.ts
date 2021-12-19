@@ -1,0 +1,1 @@
+export {handleTrailingSlash} from './handleTrailingSlash';

@@ -1,10 +1,10 @@
 /**
  * Adds or removes trailing slash according to passed parameter
- * @param {string} url Url to check
- * @param {boolean} isTrailingSlashNeeded Does url need to have trailing slash or not to
- * @returns {string}
+ * @param url Url to check
+ * @param isTrailingSlashNeeded Does url need to have trailing slash or not to
+ * @returns Clean url with/without a trailing slash
  */
-export const handleTrailingSlash = (url, isTrailingSlashNeeded) => {
+export const handleTrailingSlash = (url: string, isTrailingSlashNeeded: boolean) => {
     const hasTrailingSlash = url.endsWith('/');
 
     if (isTrailingSlashNeeded) {

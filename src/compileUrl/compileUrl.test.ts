@@ -1,11 +1,11 @@
-import {compile} from '../src/compile';
+import {compileUrl} from './compileUrl';
 
 
 describe('Function `compile`', () => {
     const BASE_URL = 'https://npmjs.com';
 
     test('Compile with no `CompileParameters` should return base url', () => {
-        const received = compile(BASE_URL);
+        const received = compileUrl(BASE_URL);
         expect(received).toBe(BASE_URL);
     });
 
@@ -13,7 +13,7 @@ describe('Function `compile`', () => {
         const params = {
             query: { a: 'b' }
         };
-        const received = compile(BASE_URL, params);
+        const received = compileUrl(BASE_URL, params);
         const expected = `${BASE_URL}?a=b`;
         expect(received).toBe(expected);
     });
@@ -22,7 +22,7 @@ describe('Function `compile`', () => {
         const params = {
             query: { a: 'b', c: 'd' }
         };
-        const received = compile(BASE_URL, params);
+        const received = compileUrl(BASE_URL, params);
         const expected = `${BASE_URL}?a=b&c=d`;
         expect(received).toBe(expected);
     });
@@ -31,7 +31,7 @@ describe('Function `compile`', () => {
         const params = {
             hash: 'test'
         };
-        const received = compile(BASE_URL, params);
+        const received = compileUrl(BASE_URL, params);
         const expected = `${BASE_URL}#test`;
         expect(received).toBe(expected);
     });
@@ -42,7 +42,7 @@ describe('Function `compile`', () => {
         };
         const url = `${BASE_URL}/{test}`;
 
-        const received = compile(url, params);
+        const received = compileUrl(url, params);
         const expected = `${BASE_URL}/value`;
 
         expect(received).toBe(expected);
@@ -54,7 +54,7 @@ describe('Function `compile`', () => {
         };
         const url = `${BASE_URL}/TEST`;
 
-        const received = compile(url, params);
+        const received = compileUrl(url, params);
         const expected = `${BASE_URL}/test`;
 
         expect(received).toBe(expected);
@@ -66,7 +66,7 @@ describe('Function `compile`', () => {
         };
         const url = `${BASE_URL}/TEST`;
 
-        const received = compile(url, params);
+        const received = compileUrl(url, params);
         const expected = `${BASE_URL}/TEST`;
 
         expect(received).toBe(expected);
@@ -78,7 +78,7 @@ describe('Function `compile`', () => {
         };
         const url = `${BASE_URL}/test`;
 
-        const received = compile(url, params);
+        const received = compileUrl(url, params);
         const expected = `${BASE_URL}/test/`;
 
         expect(received).toBe(expected);
@@ -90,9 +90,29 @@ describe('Function `compile`', () => {
         };
         const url = `${BASE_URL}/test/`;
 
-        const received = compile(url, params);
+        const received = compileUrl(url, params);
         const expected = `${BASE_URL}/test`;
 
         expect(received).toBe(expected);
     });
+
+    test('Compile with all params set', () => {
+        const params = {
+            query: {
+                foo: 'bar',
+            },
+            context: {
+                package: 'url-compiler',
+            },
+            hash: 'usage',
+            trailingSlash: true,
+            lowerCase: true,
+        }
+        const url = `${BASE_URL}/PACKAGES/{package}`;
+
+        const received = compileUrl(url, params);
+        const expected = `${BASE_URL}/packages/url-compiler/#usage?foo=bar`;
+
+        expect(received).toBe(expected);
+    })
 });
